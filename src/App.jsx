@@ -3,12 +3,12 @@ import PokeCards from './components/PokeCards'
 import api from './services/api'
 
 function App() {
-  const [count, setCount] = useState(8)
+  const [count, setCount] = useState(5)
   const [pokemons, setPokemons] = useState([])
 
-  const Carregar = function(){
-    setCount((count) => count + 8)
-    let contador = count - 7;
+  const Carregar =  function(){
+    setCount((count) => count + 5)
+    let contador = count - 4;
     console.log("aqui : ", count, contador);
     getPokemons(count, contador)
   }
@@ -33,25 +33,27 @@ function App() {
 
   useEffect(() => {
     Carregar()
+    console.log("Estou no useEffect")
   }, [])
 
 window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      Carregar()
-    }
-};
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    setTimeout(Carregar, 500)
+  }
+}; 
 
   return (
 
     <div className="App container">
       <h1>Pokemons Primeira Geração</h1>
       <div className="cards">
-
+       
         {pokemons?.map(poke => {
           return <PokeCards pokemon={poke} />
         })}
 
       </div>
+      <button onClick={Carregar}>Mais</button>
     </div>
 
   )
