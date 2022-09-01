@@ -3,12 +3,12 @@ import PokeCards from './components/PokeCards'
 import api from './services/api'
 
 function App() {
-  const [count, setCount] = useState(5)
+  const [count, setCount] = useState(8)
   const [pokemons, setPokemons] = useState([])
 
   const Carregar = function(){
-    setCount((count) => count + 5)
-    let contador = count - 4;
+    setCount((count) => count + 8)
+    let contador = count - 7;
     console.log("aqui : ", count, contador);
     getPokemons(count, contador)
   }
@@ -52,7 +52,6 @@ window.onscroll = function(ev) {
         })}
 
       </div>
-      <button onClick={Carregar}>Mais</button>
     </div>
 
   )
